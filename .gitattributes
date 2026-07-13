@@ -1,0 +1,5 @@
+# Normalize line endings to LF on checkout across all platforms.
+# The project's .editorconfig mandates end_of_line = lf; without this,
+# Git-for-Windows (core.autocrlf=true) checks out CRLF and `dotnet format`
+# fails with ENDOFLINE errors on every line.
+* text=auto eol=lf
