@@ -5,9 +5,16 @@ fix it inside a verification loop, then judge whether it really fixed it.
 
 ## What you'll do
 
-1. **Enable the Stop hook.** It re-runs `./check.sh` every time Claude tries to stop; if the
-   gate is red, it blocks the stop and hands the failures back. Enable it with:
+1. **Enable the Stop hook.** It re-runs the gate every time Claude tries to stop; if the
+   gate is red, it blocks the stop and hands the failures back. Enable it by copying the
+   disabled settings file for your platform to `.claude/settings.json`:
 
+   **Windows (PowerShell):**
+   ```powershell
+   Copy-Item .claude\settings.windows.json.disabled .claude\settings.json
+   ```
+
+   **macOS / Linux:**
    ```bash
    cp .claude/settings.json.disabled .claude/settings.json
    ```
@@ -16,7 +23,7 @@ fix it inside a verification loop, then judge whether it really fixed it.
 
 2. **Kick off the loop.** Tell Claude:
 
-   > Make `./check.sh` pass.
+   > Make the check pass.
 
    Then watch. The gate has three axes — whitespace/lint, build, and tests (including a
    performance budget). Claude will iterate red → green without you steering it.
@@ -27,16 +34,17 @@ fix it inside a verification loop, then judge whether it really fixed it.
 
 ## The gate
 
-`./check.sh` runs, in order, and stops at the first failure:
+The gate runs three steps, in order, and stops at the first failure:
 
 1. `dotnet format whitespace --verify-no-changes`
 2. `dotnet build -c Release`
 3. `dotnet test -c Release`
 
+Run it yourself with `.\check.ps1` (Windows) or `./check.sh` (macOS/Linux). The Stop hook
+runs the same gate for you.
+
 ## Reset
 
-```bash
-./reset.sh
-```
+Restores the original broken state (requires a git baseline).
 
-Restores the original broken state (requires a git baseline; see below).
+**Windows:** `.\reset.ps1`  ·  **macOS / Linux:** `./reset.sh`

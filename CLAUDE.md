@@ -6,7 +6,8 @@ A small text-utilities library: Roman numerals, slugs, simple statistics, word c
 ## Commands
 - Build:  `dotnet build`
 - Test:   `dotnet test`
-- Gate:   `./check.sh` — runs format, build, and tests in order. This is the definition of done.
+- Gate:   `.\check.ps1` (Windows) or `./check.sh` (macOS/Linux) — runs format, build, and tests
+  in order. Both scripts run the identical three steps. This is the definition of done.
 
 ## Layout
 - `src/TextKit/` — the library
@@ -18,6 +19,6 @@ A small text-utilities library: Roman numerals, slugs, simple statistics, word c
 
 ## Conventions
 - The tests are the specification. A behaviour is correct when its test passes.
-- `./check.sh` is the gate: whitespace formatting, a Release build, then the full test suite.
-  All three must pass.
+- The gate (`check.ps1` / `check.sh`) is: whitespace formatting, a Release build, then the
+  full test suite. All three must pass.
 - 4-space indentation; files end with a final newline (see `.editorconfig`).
