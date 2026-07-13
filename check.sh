@@ -22,10 +22,10 @@ fi
 titles=(
   ""
   "Fix the bugs (Roman subtractive, Slug, Median, Mean) + formatting"
-  "Stats.Mode — most frequent value, ties to the smallest"
-  "Words.TopN — n most frequent tokens, ties alphabetical"
-  "Roman.IsValid — accept only canonical numerals"
-  "Performance — CountUnique on a large input under budget"
+  "Stats.Mode - most frequent value, ties to the smallest"
+  "Words.TopN - n most frequent tokens, ties alphabetical"
+  "Roman.IsValid - accept only canonical numerals"
+  "Performance - CountUnique on a large input under budget"
 )
 
 for step in 1 2 3 4 5; do
