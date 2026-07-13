@@ -5,6 +5,7 @@ using Xunit;
 
 namespace TextKit.Tests;
 
+[Trait("step", "1")]
 public class WordsTests
 {
     [Fact]

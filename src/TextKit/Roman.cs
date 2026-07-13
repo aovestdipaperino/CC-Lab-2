@@ -53,6 +53,15 @@ public static class Roman
         return total;
     }
 
+    // STEP 4 — implement this.
+    // Return true if the string is a *canonical* Roman numeral in the range
+    // 1..3999 (the value that ToRoman would produce), and false otherwise.
+    // Reject non-canonical forms like "IIII", "VV", "IC", and invalid characters.
+    public static bool IsValid(string roman)
+    {
+        throw new NotImplementedException("Roman.IsValid is not implemented yet (step 4).");
+    }
+
     private static int ValueOf(char c) => c switch
     {
         'M' => 1000,

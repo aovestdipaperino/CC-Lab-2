@@ -29,4 +29,12 @@ public static class Stats
 
         return sum / values.Count;
     }
+
+    // STEP 2 — implement this.
+    // Return the value that appears most often. If several values tie for the
+    // most occurrences, return the smallest of them. Throw on an empty input.
+    public static int Mode(IReadOnlyList<int> values)
+    {
+        throw new NotImplementedException("Stats.Mode is not implemented yet (step 2).");
+    }
 }
