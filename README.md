@@ -5,21 +5,17 @@ fix it inside a verification loop, then judge whether it really fixed it.
 
 ## What you'll do
 
-1. **Enable the Stop hook.** It re-runs the gate every time Claude tries to stop; if the
-   gate is red, it blocks the stop and hands the failures back. Enable it by copying the
-   disabled settings file for your platform to `.claude/settings.json`:
+1. **Set the goal gate.** There is nothing to pre-configure — that's the point of `/goal`.
+   In Claude Code, type:
 
-   **Windows (PowerShell):**
-   ```powershell
-   Copy-Item .claude\settings.windows.json.disabled .claude\settings.json
+   ```
+   /goal the check script (check.sh or check.ps1) exits 0 with no failures, or stop after 15 turns
    ```
 
-   **macOS / Linux:**
-   ```bash
-   cp .claude/settings.json.disabled .claude/settings.json
-   ```
-
-   Then run `/hooks` in Claude Code and confirm the `Stop` hook is registered.
+   Every time Claude finishes a turn, the goal is re-evaluated against the transcript:
+   if the gate is still red, the failures are handed back and Claude keeps working; when
+   it's green, the goal clears. Run a bare `/goal` to confirm the goal is active
+   (and `/goal clear` if you ever need to remove it).
 
 2. **Kick off the loop.** Tell Claude:
 
@@ -40,8 +36,10 @@ The gate runs three steps, in order, and stops at the first failure:
 2. `dotnet build -c Release`
 3. `dotnet test -c Release`
 
-Run it yourself with `.\check.ps1` (Windows) or `./check.sh` (macOS/Linux). The Stop hook
-runs the same gate for you.
+Run it yourself with `.\check.ps1` (Windows) or `./check.sh` (macOS/Linux). The goal's
+evaluator doesn't run commands itself — it judges from what Claude surfaces in the
+transcript, which is why the loop must actually run the gate each round. The 15-turn
+stop clause caps a genuinely stuck loop.
 
 ## Reset
 
