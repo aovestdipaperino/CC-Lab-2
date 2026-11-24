@@ -1,5 +1,7 @@
 # Lab 2 — TextKit: the verification-gated loop
 
+[![GitHub stars](https://img.shields.io/github/stars/aovestdipaperino/CC-Lab-2?logo=github&color=brightgreen)](https://github.com/aovestdipaperino/CC-Lab-2/stargazers)
+
 This repo **starts broken**. Your job is not to fix it by hand — it is to watch Claude Code
 fix it inside a verification loop, then judge whether it really fixed it.
 
